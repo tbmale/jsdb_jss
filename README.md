@@ -4,8 +4,10 @@ Various javascripts for jsdb
 sqlite helper object - ex:
 ```
 db=new DB("path/to/db");
-if(!db.exec("create table if not exists t1('key' varchar,'val' numeric)"))
+if(!db.exec("create table if not exists t1('key' varchar,'val' numeric)")){
+  writeln(db.qry + " failed.");
   system.quit();
+  }
 if(!db.exec("insert into table t1 values('key1',1)"))
   system.quit();
 if(db.exec("select * from table")){
