@@ -1,6 +1,12 @@
 function DB(fn){
 this.path=(fn.length==0)?":memory:":fn;
-this.db=new SQLite(fn);
+try{
+ this.db=new SQLite(this.path);
+ }
+catch(e){
+ this.path=":memory:";
+ this.db=new SQLite(this.path);
+ }
 this.qry="";
 }
 
